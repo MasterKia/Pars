@@ -81,7 +81,7 @@ local function modlist(target)
     return 'Group is not added or is Realm.'
   end
   if next(data[tostring(target)]['moderators']) == nil then
-    return 'No moderator in this group.'
+    return 'هیچ مدیری در این گروه نیست .'
   end
   local i = 1
   local message = '\nList of moderators :\n'
