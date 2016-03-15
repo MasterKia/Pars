@@ -234,7 +234,7 @@ An advance Administration bot based on yagop/telegram-bot
 
 https://github.com/SEEDTEAM/TeleSeed
 
-Our team!
+ur team!
 Alphonse (@Iwals)
 I M /-\ N (@Imandaneshi)
 Siyanew (@Siyanew)
