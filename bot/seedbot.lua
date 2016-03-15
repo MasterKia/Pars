@@ -324,108 +324,98 @@ This command will send text to [group_id]
 
 ]],
     help_text = [[
-Commands list :
+📝 ليست دستورات مدیریتی ربات 🇮🇷پارس🇮🇷 :
 
-!kick [username|id]
-You can also do it by reply
+🚫 حذف کردن کاربر
+!kick [یوزرنیم]
 
-!ban [ username|id]
-You can also do it by reply
+🚫 بن کردن کاربر ( حذف برای همیشه )
+!ban [یوزرنیم]
 
-!unban [id]
-You can also do it by reply
+🚫 حذف بن کاربر ( آن بن )
+!unban [یوزرنیم]
 
-!who
-Members list
-
-!modlist
-Moderators list
-
-!promote [username]
-Promote someone
-
-!demote [username]
-Demote someone
-
-!kickme
-Will kick user
-
-!about
-Group description
-
-!setphoto
-Set and locks group photo
-
-!setname [name]
-Set group name
-
-!rules
-Group rules
-
-!id
-Return group id or user id
-
-!help
-Get commands list
-
-!lock [member|name|bots|leave] 
-Locks [member|name|bots|leaveing] 
-
-!unlock [member|name|bots|leave]
-Unlocks [member|name|bots|leaving]
-
-!set rules [text]
-Set [text] as rules
-
-!set about [text]
-Set [text] as about
-
-!settings
-Returns group settings
-
-!newlink
-Create/revoke your group link
-
-!link
-Returns group link
-
-!owner
-Returns group owner id
-
-!setowner [id]
-Will set id as owner
-
-!setflood [value]
-Set [value] as flood sensitivity
-
-!stats
-Simple message statistics
-
-!save [value] [text]
-Save [text] as [value]
-
-!get [value]
-Returns text of [value]
-
-!clean [modlist|rules|about]
-Will clear [modlist|rules|about] and set it to nil
-
-!res [username]
-Returns user id
-
-!log
-Will return group logs
-
+🚸 دريافت ليست کاربران بن شده
 !banlist
-Will return group ban list
 
-» U can use both "/" and "!" 
+🚫 حذف خودتان از گروه
+!kickme
 
-» Only mods, owner and admin can add bots in group
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
-» Only moderators and owner can use kick,ban,unban,newlink,link,setphoto,setname,lock,unlock,set rules,set about and settings commands
+🛃 انتخاب مدير اصلی گروه
+!setowner [یوزرنیم]
 
-» Only owner can use res,setowner,promote,demote and log commands
+👥 افزودن مدير برای گروه
+!promote [یوزرنیم]
+
+👥 حذف کردن یک مدير
+!demote [یوزرنیم]
+
+👥 نمایش مدیر اصلی گروه
+!owner
+
+👥 دريافت ليست مديران گروه
+!modlist
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+📃 توضيحات گروه
+!about
+
+📜 قوانين گروه
+!rules
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+🌅 انتخاب و قفل عکس گروه
+!setphoto
+
+🔖 انتخاب نام گروه
+!setname [نام مورد نظر]
+
+📜 انتخاب قوانين گروه
+!set rules <متن قوانین>
+
+📃 انتخاب توضيحات گروه
+!set about <متن مورد نظر>
+
+❌ حذف قوانين ، مديران ، اعضا و ...
+!clean [modlist|rules|about]
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+🔒 قفل [ادد - نام گروه - عکس - ورود ربات - لیو - ضد اسپم]
+!lock [member|name|photo|bots|leave|flood]
+
+🔓 باز کردن قفل [ادد - نام گروه - عکس - ورود ربات - لیو - ضد اسپم]
+!unlock [member|name|photo|bots|leave|flood]
+
+🔢 تغيير حساسيت ضد اسپم
+
+!setflood [5-20]
+
+⚙ دریافت تنظیمات گروه 
+!settings
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+📥 دريافت یوزر آی دی گروه يا کاربر
+!id
+
+♻️ دريافت يوزر آی دی یک کاربر
+!res [یوزرنیم]
+
+✅ دريافت ليست اعضای گروه
+!who
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+📌 ساخت / تغيير لينک گروه
+!newlink
+
+📌 دريافت لينک گروه
+!link
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+
+〽️ سيو کردن يک متن
+!save [value] <text>
+
+〽️ دريافت متن سيو شده
+!get [value]
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+💬 راهنمای ربات (همین متن)
+!help
 
 ]]
   }
