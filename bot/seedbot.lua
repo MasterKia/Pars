@@ -379,11 +379,11 @@ This command will send text to [group_id]
 ❌ حذف قوانين ، مديران ، اعضا و ...
 !clean [modlist|rules|about]
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
-🔒 قفل [ادد - نام گروه - عکس - ورود ربات - لیو - ضد اسپم]
-!lock [member|name|photo|bots|leave|flood]
+🔒 قفلِ [ادد کردن-نام گروه-عکس-چت به زبان فارسی-ورود ربات-ضد اسپم-لیو]
+!lock [member|name|photo|arabic|bots|flood|leave]
 
-🔓 باز کردن قفل [ادد - نام گروه - عکس - ورود ربات - لیو - ضد اسپم]
-!unlock [member|name|photo|bots|leave|flood]
+🔓 باز کردن قفلِ [ادد کردن-نام گروه-عکس-چت به زبان فارسی-ورود ربات-ضد اسپم-لیو]
+!unlock [member|name|photo|arabic|bots|flood|leave]
 
 🔢 تغيير حساسيت ضد اسپم
 
@@ -407,7 +407,6 @@ This command will send text to [group_id]
 📌 دريافت لينک گروه
 !link
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
-
 〽️ سيو کردن يک متن
 !save [value] <text>
 
@@ -416,6 +415,9 @@ This command will send text to [group_id]
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 💬 راهنمای ربات (همین متن)
 !help
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+⚜ ادمین : @SeyedKia
+🔱 کانال : @ParsTGBot
 ]]
   }
   serialize_to_file(config, './data/config.lua')
