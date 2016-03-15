@@ -324,7 +324,7 @@ This command will send text to [group_id]
 
 ]],
     help_text = [[
-dddd
+Config
 ]]
   }
   serialize_to_file(config, './data/config.lua')
