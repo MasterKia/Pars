@@ -591,7 +591,7 @@ local function setowner_by_reply(extra, success, result)
   data[tostring(msg.to.id)]['set_owner'] = tostring(msg.from.id)
       save_data(_config.moderation.data, data)
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] setted ["..msg.from.id.."] as owner")
-      local text = msg.from.print_name:gsub("_", " ").." is the owner now"
+      local text = msg.from.print_name:gsub("_", " ").." صاحب گروه است"
       return send_large_msg(receiver, text)
 end
 
@@ -614,11 +614,11 @@ local function modlist(msg)
   local data = load_data(_config.moderation.data)
   local groups = "groups"
   if not data[tostring(groups)][tostring(msg.to.id)] then
-    return 'Group is not added.'
+    return 'گروه ادد نشده است'
   end
   -- determine if table is empty
   if next(data[tostring(msg.to.id)]['moderators']) == nil then --fix way
-    return 'No moderator in this group.'
+    return 'هیچ مدیری در این گروه نیست'
   end
   local i = 1
   local message = '\nList of moderators for ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
@@ -902,7 +902,7 @@ local function run(msg, matches)
         return
       end
       if not is_owner(msg) then
-        return "Only owner can promote"
+        return "فقط صاحب گروه میتواند بقیه را مدیر کند"
       end
 	local member = matches[2]
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] promoted @".. member)
@@ -917,7 +917,7 @@ local function run(msg, matches)
     end
     if matches[1] == 'demote' and not matches[2] then
       if not is_owner(msg) then
-        return "Only the owner can demote moderators"
+        return "فقط صاحب گروه میتواند مدیران را از مدیریت برکنار کند"
       end
       if type(msg.reply_id)~="nil" then
           msgr = get_message(msg.reply_id, demote_by_reply, false)
@@ -928,10 +928,10 @@ local function run(msg, matches)
         return
       end
       if not is_owner(msg) then
-        return "Only owner can demote"
+        return "فقط صاحب گروه میتواند مدیران را از مدیریت برکنار کند"
       end
       if string.gsub(matches[2], "@", "") == msg.from.username and not is_owner(msg) then
-        return "You can't demote yourself"
+        return "شما نمیتوانید خودتان را از مدیریت برکنار کنید !"
       end
 	local member = matches[2]
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] demoted @".. member)
@@ -1049,14 +1049,14 @@ local function run(msg, matches)
 
     if matches[1] == 'newlink' and not is_realm(msg) then
       if not is_momod(msg) then
-        return "For moderators only!"
+        return "فقط برای مدیران !"
       end
       local function callback (extra , success, result)
         local receiver = 'chat#'..msg.to.id
         if success == 0 then
-           return send_large_msg(receiver, '*Error: Invite link failed* \nReason: Not creator.')
+           return send_large_msg(receiver, 'چون ربات ، سازنده گروه نیست امکان ساخت لینک وجود ندارد !')
         end
-        send_large_msg(receiver, "Created a new link")
+        send_large_msg(receiver, "لینک جدید ساخته شد")
         data[tostring(msg.to.id)]['settings']['set_link'] = result
         save_data(_config.moderation.data, data)
       end
@@ -1066,18 +1066,18 @@ local function run(msg, matches)
     end
     if matches[1] == 'link' then
       if not is_momod(msg) then
-        return "For moderators only!"
+        return "فقط برای مدیران !"
       end
       local group_link = data[tostring(msg.to.id)]['settings']['set_link']
       if not group_link then 
-        return "Create a link using /newlink first !"
+        return "ابتدا با /newlink یک لینک جدید بسازید !"
       end
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-      return "Group link:\n"..group_link
+      return "لینک گروه :\n"..group_link
     end
     if matches[1] == 'setowner' and matches[2] then
       if not is_owner(msg) then
-        return "For owner only!"
+        return "فقط برای صاحب گروه !"
       end
       data[tostring(msg.to.id)]['set_owner'] = matches[2]
       save_data(_config.moderation.data, data)
