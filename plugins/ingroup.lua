@@ -454,7 +454,7 @@ local function modadd(msg)
   end
   local data = load_data(_config.moderation.data)
   if is_group(msg) then
-    return 'گروه از قبل ادد شده'
+    return 'گروه از قبل ادد شده است'
   end
     receiver = get_receiver(msg)
     chat_info(receiver, check_member_modadd,{receiver=receiver, data=data, msg = msg})
@@ -887,7 +887,7 @@ local function run(msg, matches)
     if matches[1] == 'setphoto' and is_momod(msg) then
       data[tostring(msg.to.id)]['settings']['set_photo'] = 'waiting'
       save_data(_config.moderation.data, data)
-      return 'Please send me new group photo now'
+      return 'عکس جدید گروه را بفرستید :'
     end
     if matches[1] == 'promote' and not matches[2] then
       if not is_owner(msg) then
@@ -1087,7 +1087,7 @@ local function run(msg, matches)
     end
     if matches[1] == 'setowner' and not matches[2] then
       if not is_owner(msg) then
-        return "only for the owner!"
+        return "فقط برای صاحب گروه !"
       end
       if type(msg.reply_id)~="nil" then
           msgr = get_message(msg.reply_id, setowner_by_reply, false)
@@ -1097,13 +1097,13 @@ local function run(msg, matches)
       local group_owner = data[tostring(msg.to.id)]['set_owner']
       local user_info = redis:hgetall('user:'..group_owner)
       if not group_owner then 
-        return "no owner,ask admins in support groups to set owner for your group"
+        return "هیچکس صاحب گروه نیست"
       end
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] used /owner")
       if user_info.username then
-      	return "Group onwer is @"..user_info.username.." ["..group_owner.."]"
+      	return "صاحب گروه : @"..user_info.username.." ["..group_owner.."]"
       else
-      	return "Group owner is ["..group_owner..']'
+      	return "صاحب گروه : ["..group_owner..']'
       end
     end
     if matches[1] == 'setgpowner' then
@@ -1119,31 +1119,31 @@ local function run(msg, matches)
     end
     if matches[1] == 'setflood' then 
       if not is_momod(msg) then
-        return "For moderators only!"
+        return "فقط برای مدیران !"
       end
       if tonumber(matches[2]) < 5 or tonumber(matches[2]) > 20 then
-        return "Wrong number,range is [5-20]"
+        return "عددی از 5 تا 20 انتخاب کنید !"
       end
       local flood_max = matches[2]
       data[tostring(msg.to.id)]['settings']['flood_msg_max'] = flood_max
       save_data(_config.moderation.data, data)
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] set flood to ["..matches[2].."]")
-      return 'Group flood has been set to '..matches[2]
+      return 'حساسیت ضد اسپم تغییر کرد به '..matches[2]
     end
     if matches[1] == 'clean' then
       if not is_owner(msg) then
-        return "Only owner can clean"
+        return "فقط صاحب گروه میتواند اعضا را پاک کند"
       end
       if matches[2] == 'member' then
         if not is_owner(msg) then
-          return "Only admins can clean members"
+          return "فقط صاحب گروه میتواند اعضا را پاک کند"
         end
         local receiver = get_receiver(msg)
         chat_info(receiver, cleanmember, {receiver=receiver})
       end
       if matches[2] == 'modlist' then
         if next(data[tostring(msg.to.id)]['moderators']) == nil then --fix way
-          return 'No moderator in this group.'
+          return 'هیچ مدیری در این گروه نیست'
         end
         local message = '\nList of moderators for ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
         for k,v in pairs(data[tostring(msg.to.id)]['moderators']) do
