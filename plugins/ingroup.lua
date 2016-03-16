@@ -445,16 +445,16 @@ local function set_rulesmod(msg, data, target)
   local data_cat = 'rules'
   data[tostring(target)][data_cat] = rules
   save_data(_config.moderation.data, data)
-  return 'Set group rules to:\n'..rules
+  return 'تغییر قوانین گروه به :\n'..rules
 end
 local function modadd(msg)
   -- superuser and admins only (because sudo are always has privilege)
   if not is_admin(msg) then
-    return "You're not admin"
+    return "شما مدیر نیستید"
   end
   local data = load_data(_config.moderation.data)
   if is_group(msg) then
-    return 'Group is already added.'
+    return 'گروه از قبل ادد شده'
   end
     receiver = get_receiver(msg)
     chat_info(receiver, check_member_modadd,{receiver=receiver, data=data, msg = msg})
@@ -462,7 +462,7 @@ end
 local function realmadd(msg)
   -- superuser and admins only (because sudo are always has privilege)
   if not is_admin(msg) then
-    return "You're not admin"
+    return "شما مدیر نیستید"
   end
   local data = load_data(_config.moderation.data)
   if is_realm(msg) then
@@ -475,11 +475,11 @@ end
 function modrem(msg)
   -- superuser and admins only (because sudo are always has privilege)
   if not is_admin(msg) then
-    return "You're not admin"
+    return "شما مدیر نیستید"
   end
   local data = load_data(_config.moderation.data)
   if not is_group(msg) then
-    return 'Group is not added.'
+    return 'گروه ادد نشده'
   end
     receiver = get_receiver(msg)
     chat_info(receiver, check_member_modrem,{receiver=receiver, data=data, msg = msg})
@@ -488,7 +488,7 @@ end
 function realmrem(msg)
   -- superuser and admins only (because sudo are always has privilege)
   if not is_admin(msg) then
-    return "You're not admin"
+    return "شما مدیر نیستید"
   end
   local data = load_data(_config.moderation.data)
   if not is_realm(msg) then
@@ -500,10 +500,10 @@ end
 local function get_rules(msg, data)
   local data_cat = 'rules'
   if not data[tostring(msg.to.id)][data_cat] then
-    return 'No rules available.'
+    return 'هیچ قوانینی در دسترس نیست'
   end
   local rules = data[tostring(msg.to.id)][data_cat]
-  local rules = 'Chat rules:\n'..rules
+  local rules = 'قوانین گروه :\n'..rules
   return rules
 end
 
