@@ -500,7 +500,7 @@ end
 local function get_rules(msg, data)
   local data_cat = 'rules'
   if not data[tostring(msg.to.id)][data_cat] then
-    return 'هیچ قوانینی در دسترس نیست'
+    return 'هیچ قانونی در دسترس نیست'
   end
   local rules = data[tostring(msg.to.id)][data_cat]
   local rules = 'قوانین گروه :\n'..rules
@@ -618,7 +618,7 @@ local function modlist(msg)
   end
   -- determine if table is empty
   if next(data[tostring(msg.to.id)]['moderators']) == nil then --fix way
-    return 'هیچ مدیری در این گروه نیست'
+    return 'هیچ کس در این گروه مدیر نیست'
   end
   local i = 1
   local message = '\nList of moderators for ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
@@ -891,7 +891,7 @@ local function run(msg, matches)
     end
     if matches[1] == 'promote' and not matches[2] then
       if not is_owner(msg) then
-        return "Only the owner can prmote new moderators"
+        return "فقط صاحب گروه میتواند بقیه را مدیر کند"
       end
       if type(msg.reply_id)~="nil" then
           msgr = get_message(msg.reply_id, promote_by_reply, false)
