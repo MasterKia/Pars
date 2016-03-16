@@ -1101,9 +1101,9 @@ local function run(msg, matches)
       end
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] used /owner")
       if user_info.username then
-      	return "صاحب گروه : @"..user_info.username.." ["..group_owner.."]"
+      	return "صاحب گروه :\n @"..user_info.username.." ["..group_owner.."]"
       else
-      	return "صاحب گروه : ["..group_owner..']'
+      	return "صاحب گروه :\n ["..group_owner..']'
       end
     end
     if matches[1] == 'setgpowner' then
