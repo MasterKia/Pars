@@ -1128,7 +1128,7 @@ local function run(msg, matches)
       data[tostring(msg.to.id)]['settings']['flood_msg_max'] = flood_max
       save_data(_config.moderation.data, data)
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] set flood to ["..matches[2].."]")
-      return 'حساسیت ضد اسپم تغییر کرد به '..matches[2]
+      return 'حساسیت ضد اسپم به این عدد تغییر کرد : '..matches[2]
     end
     if matches[1] == 'clean' then
       if not is_owner(msg) then
