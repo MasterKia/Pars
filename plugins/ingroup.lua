@@ -538,7 +538,7 @@ local function promote(receiver, member_username, member_id)
   end
   data[group]['moderators'][tostring(member_id)] = member_username
   save_data(_config.moderation.data, data)
-  return send_large_msg(receiver, ' کاربر'member_username..' مدیر شد')
+  return send_large_msg(receiver, 'کاربر'..member_username..' مدیر شد')
 end
 
 local function promote_by_reply(extra, success, result)
