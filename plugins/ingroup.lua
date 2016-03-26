@@ -591,7 +591,7 @@ local function setowner_by_reply(extra, success, result)
   data[tostring(msg.to.id)]['set_owner'] = tostring(msg.from.id)
       save_data(_config.moderation.data, data)
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] setted ["..msg.from.id.."] as owner")
-      local text = msg.from.print_name:gsub("_", " ").." صاحب گروه است"
+      local text = msg.from.print_name:'کاربر 'gsub("_", " ").." صاحب گروه است"
       return send_large_msg(receiver, text)
 end
 
