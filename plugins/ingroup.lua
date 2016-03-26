@@ -562,11 +562,11 @@ local function demote(receiver, member_username, member_id)
     return send_large_msg(receiver, 'گروه ادد نشده است')
   end
   if not data[group]['moderators'][tostring(member_id)] then
-    return send_large_msg(receiver, member_username..' مدیر نیست')
+    return send_large_msg(receiver, 'کاربر '..member_username..' مدیر نیست')
   end
   data[group]['moderators'][tostring(member_id)] = nil
   save_data(_config.moderation.data, data)
-  return send_large_msg(receiver, 'کاربر '..member_username..' مدیر شد')
+  return send_large_msg(receiver, 'کاربر '..member_username..' از مدیریت برکنار شد')
 end
 
 local function demote_by_reply(extra, success, result)
